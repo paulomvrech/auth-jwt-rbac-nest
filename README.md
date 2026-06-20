@@ -19,6 +19,14 @@ rotas protegidas (JWT) ── expira ──► /refresh (rotaciona o par) ──
 - O hash do refresh fica no banco, permitindo **revogação** (logout).
 - **RBAC**: rotas podem exigir um papel específico (`@Roles(Role.ADMIN)`).
 
+## 🎬 Demonstração — RBAC em ação
+
+![Usuário comum recebe 403 na rota de admin; admin acessa com sucesso](src/assets/AuthTest.gif)
+
+Um usuário autenticado acessa `/auth/me` normalmente, mas recebe **403 Forbidden**
+ao tentar uma rota restrita a administradores. Após login com um usuário de papel
+ADMIN, a mesma rota retorna **200** — demonstrando o controle de acesso por papéis.
+
 ## 🛠️ Tecnologias
 - NestJS + TypeScript
 - Passport (`passport-jwt`) + `@nestjs/jwt`
